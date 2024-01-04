@@ -140,19 +140,33 @@ public static class EditorUtils
 
 				if (originalMaterialPath != userMaterialPath)
 				{
-					DebugUtils.Log(DebugContext.General, $"Material change detected!\noriginalMaterialPath = {originalMaterialPath}\nuserMaterialPath = {userMaterialPath}\n");
+					DebugUtils.Log(DebugContext.General, $"Material change detected!\noriginalMaterialPath = {originalMaterialPath}\nuserMaterialPath = {userMaterialPath}\n", go);
 
-					(string path, string name) = GetPathAndNameFromMaterial(userMaterials[i]);
-					PrefabDictionaryItem prefabDictionaryItem = prefabDictionary.ResolveOrCreate(path, name, PrefabDictionaryItemType.Material);
+					changedMaterials ??= new();
 
-					changedMaterials ??= new List<MaterialReference>();
-					MaterialReference materialReference = new()
+					if (userMaterials[i] != null)
 					{
-						slot = i,
-						id = prefabDictionaryItem.id,
-						name = name
-					};
-					changedMaterials.Add(materialReference);
+						(string path, string name) = GetPathAndNameFromMaterial(userMaterials[i]);
+						PrefabDictionaryItem prefabDictionaryItem = prefabDictionary.ResolveOrCreate(path, name, PrefabDictionaryItemType.Material);
+
+						MaterialReference materialReference = new()
+						{
+							slot = i,
+							id = prefabDictionaryItem.id,
+							name = name
+						};
+						changedMaterials.Add(materialReference);
+					}
+					else
+					{
+						MaterialReference materialReference = new()
+						{
+							slot = i,
+							id = null,
+							name = null
+						};
+						changedMaterials.Add(materialReference);
+					}
 				}
 			}
 		}

@@ -175,7 +175,14 @@ class JsonV1Deserializer : IDeserializer
 		Material[] newMaterials = (Material[]) renderer.sharedMaterials.Clone();
 		foreach (MaterialReference materialReference in serializedGameObject.materials)
 		{
-			newMaterials[materialReference.slot] = FindMaterial(prefabDictionary, materialReference.id, materialReference.name);
+			if (materialReference.id == null && materialReference.name == null)
+			{
+				newMaterials[materialReference.slot] = null;
+			}
+			else
+			{
+				newMaterials[materialReference.slot] = FindMaterial(prefabDictionary, materialReference.id, materialReference.name);
+			}
 		}
 		renderer.sharedMaterials = newMaterials;
 	}

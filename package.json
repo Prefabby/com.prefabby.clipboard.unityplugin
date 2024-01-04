@@ -1,0 +1,20 @@
+{
+	"name": "com.prefabby.clipboard.unityplugin",
+	"displayName": "Prefabby Clipboard",
+	"version": "0.1.0",
+	"unity": "2021.3",
+	"description": "Prefabby Clipboard is an editor utility to store prefab hierarchies for easier reuse.",
+	"author": {
+		"name": "Matthias Gall",
+		"email": "matt@prefabby.com",
+		"url": "https://prefabby.com"
+	},
+	"license": "AGPL-3.0-or-later",
+	"keywords": [ "prefabby", "prefab", "asset", "scene", "share", "clipboard", "editor", "utility" ],
+	"category": "Tools",
+	"dependencies": {
+		"com.unity.editorcoroutines": "1.0.0",
+		"com.unity.nuget.newtonsoft-json": "2.0.2"
+	}
+}
+

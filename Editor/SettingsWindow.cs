@@ -97,7 +97,7 @@ class SettingsWindow : EditorWindow
 		UnityEngine.GUI.enabled = false;
 		EditorGUILayout.TextField(contentDirectory, GUILayout.ExpandWidth(true), GUILayout.Height(20));
 		UnityEngine.GUI.enabled = true;
-		if (GUILayout.Button(folderIcon, GUILayout.Width(20), GUILayout.Height(20)))
+		if (GUILayout.Button(folderIcon, GUILayout.Width(32), GUILayout.Height(20)))
 		{
 			string newPath = EditorUtility.OpenFolderPanel("Select content folder", contentDirectory, "");
 			if (!string.IsNullOrEmpty(newPath))

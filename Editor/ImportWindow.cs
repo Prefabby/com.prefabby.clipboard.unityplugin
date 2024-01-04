@@ -151,18 +151,18 @@ class ImportWindow : EditorWindow
 		EditorGUILayout.Space();
 
 		EditorGUILayout.BeginHorizontal();
-		if (GUILayout.Button("Update", GUILayout.ExpandWidth(true)))
+		if (GUILayout.Button("Update", GUILayout.ExpandWidth(true), GUILayout.Height(20)))
 		{
 			clipboardEntry.name = editedName;
 			clipboardEntry.tags = editedTags;
 			clipboardEntry.Save();
 		}
-		if (GUILayout.Button(favoriteIcon, GUILayout.ExpandWidth(false)))
+		if (GUILayout.Button(favoriteIcon, GUILayout.Width(32), GUILayout.Height(20)))
 		{
 			clipboardEntry.favorite = !clipboardEntry.favorite;
 			clipboardEntry.Save();
 		}
-		if (GUILayout.Button(deleteIcon, GUILayout.ExpandWidth(false)))
+		if (GUILayout.Button(deleteIcon, GUILayout.Width(32), GUILayout.Height(20)))
 		{
 			if (EditorUtility.DisplayDialog("Confirm deletion", "Are you sure to delete this clipboard entry? This action cannot be undone.", "OK", "Cancel"))
 			{

@@ -102,7 +102,9 @@ All Prefabby plugins only look at prefabs and only store transforms. Other nativ
 
 Currently considered future updates:
 
-* Currently, for every dragged scene object, a new entry is created. In the future I would like to distinguish between creating a whole new entry and updating an existing entry. (This is also where uncompressed object structure might become more relevant.)
+* Currently, for every dragged scene object, a new entry is created. I would like to distinguish between creating a whole new entry and updating an existing entry. (This is also where uncompressed object structure might become more relevant.)
+
+* There's currently no progress indicator when larger subtrees are processed in either direction. I would like to show some feedback to avoid the impression that Unity froze.
 
 I am looking forward to reading your feedback and more suggestions.
 

@@ -541,7 +541,11 @@ public class PrefabbyClipboardWindow : EditorWindow
 		Bounds bounds = renderers[0].bounds;
 		for (int i = 1; i < renderers.Length; ++i)
 		{
-			bounds.Encapsulate(renderers[i].bounds);
+			// Ignore particle systems as they're not initialized yet and will screw the offset
+			if (renderers[i] is not ParticleSystemRenderer)
+			{
+				bounds.Encapsulate(renderers[i].bounds);
+			}
 		}
 		return bounds;
 	}

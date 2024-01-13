@@ -26,7 +26,6 @@ namespace PrefabbyClipboard
 public enum DebugContext
 {
 	General,
-	RestApi,
 	Serialization,
 	Deserialization,
 	PrefabDictionaryIncoming,
@@ -39,7 +38,6 @@ public static class DebugUtils
 	public static HashSet<DebugContext> enabledDebugContexts = new HashSet<DebugContext>
 	{
 		DebugContext.General,
-		DebugContext.RestApi,
 		DebugContext.Serialization,
 		DebugContext.Deserialization,
 		DebugContext.PrefabDictionaryIncoming,

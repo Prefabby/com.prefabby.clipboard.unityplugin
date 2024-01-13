@@ -25,6 +25,7 @@ public class SettingsData
 {
 
 	public SerializedVector objectOffsetForPreview = new SerializedVector(new Vector3(-10000, -10000, -10000));
+	public int maximumDistance = -1;
 	public int previewThumbnailWidth = 200;
 	public string contentDirectory;
 	public bool saveCompressed = true;

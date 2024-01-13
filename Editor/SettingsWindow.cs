@@ -37,6 +37,7 @@ class SettingsWindow : EditorWindow
 	private string contentDirectory;
 	private Vector3 offset;
 	private int thumbnailWidth;
+	private int maximumDistance;
 	private bool saveCompressed;
 
 	public static SettingsWindow Show(Action onSettingsSaved)
@@ -53,6 +54,7 @@ class SettingsWindow : EditorWindow
 		contentDirectory = Settings.Data.contentDirectory;
 		offset = Settings.Data.objectOffsetForPreview.ToVector3();
 		thumbnailWidth = Settings.Data.previewThumbnailWidth;
+		maximumDistance = Settings.Data.maximumDistance;
 		saveCompressed = Settings.Data.saveCompressed;
 	}
 
@@ -115,6 +117,13 @@ class SettingsWindow : EditorWindow
 		EditorGUILayout.Space();
 
 		EditorGUILayout.BeginVertical(GUI.groupStyle);
+		GUILayout.Label("Maximum selection distance", EditorStyles.boldLabel);
+		GUILayout.Label("Unity's select might add unwanted objects to the selection. You can specify a maximum distance from the closest object to the camera to reduce the selection.", EditorStyles.wordWrappedLabel);
+		maximumDistance = EditorGUILayout.IntField(maximumDistance);
+		GUILayout.EndVertical();
+		EditorGUILayout.Space();
+
+		EditorGUILayout.BeginVertical(GUI.groupStyle);
 		GUILayout.Label("Offset for preview screenshot", EditorStyles.boldLabel);
 		GUILayout.Label("When a clipboard entry is created, Prefabby Clipboard rebuilds the selected object in the scene to create a screenshot using the given offset from the scene origin. If parts of your original scene appear in the preview, you can increase this offset.", EditorStyles.wordWrappedLabel);
 		offset = EditorGUILayout.Vector3Field("", offset);
@@ -157,6 +166,7 @@ class SettingsWindow : EditorWindow
 	private void SaveAndClose()
 	{
 		Settings.Data.objectOffsetForPreview = new SerializedVector(offset);
+		Settings.Data.maximumDistance = maximumDistance;
 		Settings.Data.previewThumbnailWidth = thumbnailWidth;
 		Settings.Data.contentDirectory = contentDirectory;
 		Settings.Data.saveCompressed = saveCompressed;

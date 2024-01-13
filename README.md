@@ -88,11 +88,13 @@ If you don't need a specific entry anymore, you can delete it by clicking on it 
 
 The settings dialog accessible through the cog icon at the top right of the Prefabby Clipboard window contains more settings you may find useful apart from the already discussed content directory setting.
 
-The 'Offset for preview screenshot' setting configures where in the scene the rebuilt entry should be placed when a screenshot is taken. This is to avoid that artifacts of the remaining scene are visible in the screenshot. By default it's a rather large offset of -10000/-10000/-10000 but depending on your scene, this may not be sufficient and may need to be changed.
+The **'Maximum selection distance'** can help to reduce the selected game objects, particularly since Unity's drag selection often includes game objects in the far distance behind another selected game object. If this setting contains a number greater than -1, Prefabby Clipboard finds the game object closest to the scene view camera first and then calculates the distance of every other selection object to this reference object. If it's above the specified distance, it will not be included. To disable this setting, enter "-1" as the value.
 
-The 'Preview thumbnail width' is the width of the thumbnails shown in the Prefabby Clipboard window. If you prefer a larger or smaller preview, you can adjust this setting. Note that the name will only be shown under the thumbnail from 150 pixels upwards.
+The **'Offset for preview screenshot'** setting configures where in the scene the rebuilt entry should be placed when a screenshot is taken. This is to avoid that artifacts of the remaining scene are visible in the screenshot. By default it's a rather large offset of -10000/-10000/-10000 but depending on your scene, this may not be sufficient and may need to be changed.
 
-The 'Save compressed' option toggles whether the stored object structure will be stored compressed or as plain JSON. Storing it compressed saves a few bytes of harddrive space as it's only needed when it's actually imported, but if you're checking your content directory into version control, having plain text files might be preferable.
+The **'Preview thumbnail width'** is the width of the thumbnails shown in the Prefabby Clipboard window. If you prefer a larger or smaller preview, you can adjust this setting. Note that the name will only be shown under the thumbnail from 150 pixels upwards.
+
+The **'Save compressed'** option toggles whether the stored object structure will be stored compressed or as plain JSON. Storing it compressed saves a few bytes of harddrive space as it's only needed when it's actually imported, but if you're checking your content directory into version control, having plain text files might be preferable. Also interoperability with the Godot counterpart currently requires uncompressed files.
 
 ## 🚧 Restrictions
 

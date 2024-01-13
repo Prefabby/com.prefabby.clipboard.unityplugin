@@ -390,13 +390,39 @@ public class PrefabbyClipboardWindow : EditorWindow
 
 	private void SaveToClipboard(GameObject[] gameObjects)
 	{
+		bool multipleGOs = gameObjects.Length > 1;
+		// Find reference GO if necessary
+		GameObject referenceGO = null;
+		if (multipleGOs && Settings.Data.maximumDistance > -1)
+		{
+			Vector3 sceneViewCameraPosition = SceneView.lastActiveSceneView.camera.transform.position;
+			float minDistance = float.MaxValue;
+			foreach (GameObject go in gameObjects)
+			{
+				float distance = Vector3.Distance(go.transform.position, sceneViewCameraPosition);
+				if (distance < minDistance)
+				{
+					minDistance = distance;
+					referenceGO = go;
+				}
+			}
+			Debug.Log($"The closest object distance to the scene camera is {minDistance} and the object {referenceGO.name}", referenceGO);
+		}
 		// Create serialized representation; merge multiple GOs into one tree afterwards
 		PrefabDictionary prefabDictionary = new();
-		bool multipleGOs = gameObjects.Length > 1;
 		List<SerializedTree> trees = new();
 		for (int i = 0; i < gameObjects.Length; ++i)
 		{
 			GameObject go = gameObjects[i];
+			// Check if we can skip this one due to a too high distance
+			if (multipleGOs && Settings.Data.maximumDistance > -1 && go != referenceGO)
+			{
+				if (Vector3.Distance(referenceGO.transform.position, go.transform.position) > Settings.Data.maximumDistance)
+				{
+					DebugUtils.Log(DebugContext.Serialization, $"Skipping object {go.name} due to distance", go);
+					continue;
+				}
+			}
 			ISerializer serializer = new JsonV1Serializer(go, prefabDictionary);
 			SerializedTree child = serializer.Serialize();
 			SerializedGameObject rootOfChild = child.FindById(child.root);
@@ -408,7 +434,7 @@ public class PrefabbyClipboardWindow : EditorWindow
 		}
 		SerializedTree tree;
 		SerializedGameObject root;
-		if (multipleGOs)
+		if (trees.Count > 1)
 		{
 			root = new()
 			{

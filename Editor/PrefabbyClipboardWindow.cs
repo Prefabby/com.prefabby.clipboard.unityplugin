@@ -81,7 +81,7 @@ public class PrefabbyClipboardWindow : EditorWindow
 		DebugUtils.Log(DebugContext.General, $"Prefabby Clipboard v{Constants.version} enabled using data directory {Settings.Data.contentDirectory}");
 	}
 
-	public void OnGUI()
+	void OnGUI()
 	{
 		GUI.InitializeIfNecessary();
 
@@ -89,6 +89,15 @@ public class PrefabbyClipboardWindow : EditorWindow
 		RenderSearch();
 		RenderEntries();
 		HandleDragAndDrop();
+	}
+
+	void OnDestroy()
+	{
+		foreach (KeyValuePair<string, Texture2D> previewImage in previewImages)
+		{
+			DestroyImmediate(previewImage.Value);
+		}
+		previewImages.Clear();
 	}
 
 	private void RenderTitleBar()
@@ -383,6 +392,7 @@ public class PrefabbyClipboardWindow : EditorWindow
 		byte[] data = File.ReadAllBytes(fileName);
 		Texture2D texture = new Texture2D(2, 2);
 		texture.LoadImage(data);
+		texture.hideFlags = HideFlags.DontSaveInEditor;
 		previewImages.Add(id, texture);
 
 		yield return null;

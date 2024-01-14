@@ -1,7 +1,7 @@
 {
 	"name": "com.prefabby.clipboard.unityplugin",
 	"displayName": "Prefabby Clipboard",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"unity": "2021.3",
 	"description": "Prefabby Clipboard is an editor utility to store prefab hierarchies for easier reuse.",
 	"author": {

@@ -14,6 +14,12 @@ This repository hosts the Prefabby Clipboard plugin for the Unity game engine.
 
 Prefabby Clipboard allows you to store scene parts built out of prefabs in a project-local or system-global store for easier reuse. It's a great helper if you quickly want to copy content from one Unity instance to another, or if you want to build up a repository of reusable parts within a project.
 
+**Here's a marketing video:**
+
+<a href="https://www.youtube.com/watch?v=etVfgiJU2UU">
+	<img src="Images/PrefabbyDemoScreenshot.jpg" alt="Prefabby demonstration video screenshot" title="Demo" />
+</a>
+
 **And here's a bit longer background which probably explains best what Prefabby Clipboard is and how it's meant to be used – my own use case:**
 
 As a developer, I often find myself looking at the demo scenes of art packs I am purchasing, in awe for what talented designers are able to achieve. I am not a talented designer, so I tend to copy bits I like and then rearrange them.

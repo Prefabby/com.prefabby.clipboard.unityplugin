@@ -68,7 +68,7 @@ If you prefer a project-local storage of clipboard entries, you can open the Pre
 
 Note that you still have to manually change the content directory afterwards, as Prefabby Clipboard doesn't make any assumptions about your preferred project-local content directory.
 
-The stored metadata also contains a list of all required art pack directories, i.e. the original directories from where the prefabs were created. If you want to reproduce the same hierarchy in a different project, you need to have the same art packs installed and Prefabby Clipboard checks for the existance whenever you attempt to import a clipboard entry into the scene.
+The stored metadata also contains a list of all required art pack directories, i.e. the original directories from where the prefabs were created. If you want to reproduce the same hierarchy in a different project, you need to have the same art packs installed and Prefabby Clipboard checks for the existence whenever you attempt to import a clipboard entry into the scene.
 
 ### Entry names, searching and favorites
 
